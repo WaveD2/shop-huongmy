@@ -1,0 +1,22 @@
+.footer {
+    background: var(--primary-color);
+    padding: 20px 0px;
+}
+
+.footer h1,
+h4 {
+    color: #fff;
+}
+.footer_box li {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+.footer_box li:hover a {
+    color: #ccc;
+}
+@media screen and (max-width: 768px) {
+    .footer_box span {
+        display: flex;
+        gap: 10px;
+    }
+}

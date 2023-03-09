@@ -1,0 +1,23 @@
+.billing_form .form_group input {
+    border: 1px solid var(--card-bg-02);
+}
+
+.check_cart {
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border-radius: 6px;
+}
+.check_cart h6,
+h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.check_cart h6 {
+    margin-bottom: 20px;
+}
+.check_cart h3 {
+    border-top: 1px solid #615f5f;
+    padding-top: 20px;
+}

@@ -1,0 +1,105 @@
+.admin_header {
+    width: 100%;
+    height: auto;
+    background-color: var(--primary-color);
+}
+
+.admin_nav-top {
+    width: 100%;
+    padding: 10px 0;
+}
+.admin_nav-wrapper-top {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.admin_nav-wrapper-top .search_box {
+    position: relative;
+}
+.search_box input {
+    border-radius: 4px;
+}
+.search_box span {
+    position: absolute;
+    right: 40px;
+    font-size: 1.25rem;
+}
+.admin_nav-top-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.admin_nav-top-right img {
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    object-fit: cover;
+    cursor: pointer;
+}
+.admin_menu {
+    width: 100%;
+    background-color: var(--card-bg-03);
+}
+
+.admin_nav {
+    text-align: center;
+    height: 70px;
+    line-height: 50px;
+    padding: 10px 0;
+}
+.admin_menu-list {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.admin_menu-item a {
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 1.2rem;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.active_admin-item {
+    background-color: #6aa3f8;
+}
+
+/* dashboard */
+
+.revenue_box,
+.order_box,
+.product_box,
+.user_box {
+    padding: 20px;
+    border-radius: 5px;
+}
+.revenue_box {
+    background: var(--card-bg-01);
+}
+.order_box {
+    background: var(--card-bg-02);
+}
+.product_box {
+    background: var(--card-bg-03);
+}
+.user_box {
+    background: var(--card-bg-04);
+}
+.revenue_box h5,
+.order_box h5,
+.product_box h5,
+.user_box h5 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+.revenue_box span,
+.order_box span,
+.product_box span,
+.user_box span {
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--primary-color);
+}

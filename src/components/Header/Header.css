@@ -1,0 +1,179 @@
+.header {
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+}
+
+.nav_wrapper {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+  column-gap: 8px;
+}
+.logo img {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+.logo h1 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  column-gap: 2.6rem;
+  margin-bottom: 0;
+}
+
+.nav_item a {
+  color: var(--primary-color);
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nav_icons {
+  display: flex;
+  align-items: center;
+  column-gap: 1.2rem;
+}
+.nav_icons span i {
+  font-size: 1.4rem;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+.heart_icon,
+.cart_icon {
+  position: relative;
+}
+
+.badge {
+  position: absolute;
+  top: 25%;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  content: "";
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  font-weight: 600;
+  z-index: 10;
+}
+.nav_icons .profile {
+  height: 45px;
+  width: 45px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.nav_icons .profile_action {
+  position: absolute;
+  right: 5%;
+  z-index: 10;
+  background-color: var(--card-bg-01);
+  line-height: 30px;
+  display: none;
+  border-radius: 4px;
+}
+.profile_action.show_profile_action {
+  display: block !important;
+}
+.profile_action a {
+  border-bottom: 1px solid var(--small-text-color);
+  padding: 8px 30px;
+}
+.profile_action a:hover {
+  background-color: var(--card-bg-04);
+  color: var(--heading-text-color);
+  border-radius: 4px;
+}
+
+.mobile_menu {
+  font-size: 1.3rem;
+  color: var(--primary-color);
+  display: none;
+}
+
+.nav_active {
+  font-weight: 600 !important;
+}
+
+.sticky_header {
+  width: 100%;
+  height: 70px;
+  line-height: 70px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  box-shadow: 3px 3px 8px -3px #ccc;
+  background-color: #fff;
+}
+
+@media screen and (max-width: 768px) {
+  .navigation {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 999;
+    display: none;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+    flex-direction: column;
+  }
+  .active_menu {
+    display: block;
+  }
+  .mobile_menu {
+    display: block;
+  }
+  .mobile_menu span i {
+    font-size: 1.1rem !important;
+  }
+  .logo img {
+    width: 1rem;
+    height: 1rem;
+  }
+  .logo h1 {
+    font-size: 1rem;
+  }
+  .heart_icon i,
+  .cart_icon {
+    font-size: 1.2rem !important;
+  }
+  .nav_icons span img {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+  .header {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+  }
+  .profile_action a {
+    padding: 8px 15px;
+  }
+}
