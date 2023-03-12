@@ -15,28 +15,28 @@ const Footer = () => {
             </div>
             <div>
               <p className="footer_text mt-3">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Dolorum quae veritatis adipisci nemo aliquam repellat
-                temporibus, error tenetur? Ipsa, distinctio!
+                Cửa hàng Hường Mỵ chuyên sỉ lẻ quần áo - giày dép trẻ em. Cam
+                kết chất lượng về sản phẩm. Hỗ trợ ship và giao hàng trên toàn
+                quốc. Đổi trả sản phẩm miễn phí
               </p>
             </div>
           </Col>
 
           <Col lg="3" className="mb-4">
             <div className="footer_quick-links">
-              <h4 className="quick_links-title">Top Categories</h4>
+              <h4 className="quick_links-title">Sản phẩm </h4>
               <ListGroup className="footer_box">
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Mobile Phones</Link>
+                  <Link to="#">Bàn ghế</Link>
                 </ListGroupItem>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Arm Chair</Link>
+                  <Link to="#">Ghế Sofa</Link>
                 </ListGroupItem>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Modern Sofa</Link>
+                  <Link to="#">Điện thoại </Link>
                 </ListGroupItem>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Smart Watches</Link>
+                  <Link to="#">Đồng hồ thông minh</Link>
                 </ListGroupItem>
               </ListGroup>
             </div>
@@ -44,16 +44,16 @@ const Footer = () => {
 
           <Col lg="2" className="mb-4">
             <div className="footer_quick-links">
-              <h4 className="quick_links-title">Useful Links</h4>
+              <h4 className="quick_links-title">Menu</h4>
               <ListGroup className="footer_box">
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="/shop">Shop</Link>
+                  <Link to="/shop">Cửa hàng</Link>
                 </ListGroupItem>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="/cart">Cart</Link>
+                  <Link to="/cart">Giỏ hàng</Link>
                 </ListGroupItem>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="/login">Login</Link>
+                  <Link to="/login">Đăng nhập</Link>
                 </ListGroupItem>
               </ListGroup>
             </div>
@@ -61,7 +61,7 @@ const Footer = () => {
 
           <Col lg="3" className="mb-4">
             <div className="footer_quick-links">
-              <h4 className="quick_links-title">Contact</h4>
+              <h4 className="quick_links-title">Liên hệ</h4>
               <ListGroup className="footer_box">
                 <ListGroupItem className="ps-0 border-0">
                   <span>

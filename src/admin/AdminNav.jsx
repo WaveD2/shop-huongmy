@@ -1,19 +1,27 @@
-import React from "react";
+import React, { useState, useRef } from "react";
 import { Container, Row, Col } from "reactstrap";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import useAuth from "../custom-hook/useAuth";
 import "./styles.css";
+import imgDefaut from "../assets/images/user-icon.png";
+import Search from "../components/Search";
 
 const admin_nav = [
-  { display: "Dashboard", path: "/dashboard" },
-  { display: "All-Products", path: "/dashboard/all-products" },
-  { display: "Orders", path: "/dashboard/orders" },
-  { display: "Users", path: "/dashboard/users" },
+  { display: "Biểu đồ", path: "/dashboard" },
+  { display: "Sản phẩm", path: "/dashboard/all-products" },
+  { display: "Sản phẩm đã bán", path: "/dashboard/orders" },
+  { display: "Người dùng", path: "/dashboard/users" },
 ];
 
 const AdminNav = () => {
   const currentUser = useAuth();
-
+  const isActiveCloseMobile = useRef();
+  const isActiveMenuMobile = useRef();
+  const menuMobileToggle = () => {
+    console.log(isActiveMenuMobile);
+    isActiveMenuMobile.current.classList.toggle("menuActive");
+    isActiveCloseMobile.current.classList.toggle("menuActive");
+  };
   return (
     <>
       <header className="admin_header">
@@ -21,14 +29,11 @@ const AdminNav = () => {
           <Container>
             <div className="admin_nav-wrapper-top">
               <div className="logo">
-                <h2>WaveD</h2>
+                <Link to="/home">
+                  <h2>WaveD</h2>
+                </Link>
               </div>
-              <div className="search_box">
-                <input type="text" placeholder="Search..." />
-                <span>
-                  <i class="ri-search-line"></i>
-                </span>
-              </div>
+              <Search />
 
               <div className="admin_nav-top-right">
                 <span>
@@ -38,7 +43,7 @@ const AdminNav = () => {
                   <i className="ri-settings-3-line"></i>
                 </span>
 
-                {/* <img src={currentUser || currentUser.photoURL} alt="" /> */}
+                <img src={currentUser.photoURL || imgDefaut} alt="" />
               </div>
             </div>
           </Container>
@@ -49,19 +54,29 @@ const AdminNav = () => {
         <Container>
           <Row>
             <div className="admin_nav">
-              <ul className="admin_menu-list">
+              <ul className="admin_menu-list" ref={isActiveMenuMobile}>
                 {admin_nav.map((item, index) => (
-                  <li className="admin_menu-item" key={index}>
-                    <NavLink
-                      to={item.path}
-                      className={(navClass) =>
-                        navClass.isActive ? "active_admin-item" : ""
-                      }>
-                      {item.display}
-                    </NavLink>
+                  <li
+                    className="admin_menu-item "
+                    key={index}
+                    onClick={menuMobileToggle}>
+                    <NavLink to={item.path}>{item.display}</NavLink>
                   </li>
                 ))}
               </ul>
+              <div className="mobile_menu ">
+                <Search />
+                <span onClick={menuMobileToggle}>
+                  <i className="ri-menu-line"></i>
+                </span>
+              </div>
+              <span
+                style={{ fontSize: "26px" }}
+                className="mobile_menu-close"
+                onClick={menuMobileToggle}
+                ref={isActiveCloseMobile}>
+                <i className="ri-close-line"></i>
+              </span>
             </div>
           </Row>
         </Container>

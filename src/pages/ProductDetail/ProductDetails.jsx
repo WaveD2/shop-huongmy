@@ -9,34 +9,38 @@ import ProductsList from "../../components/UI/ProductList";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/slices/cartSlice";
 import { toast } from "react-toastify";
-import useGetDataFireBase from "../../custom-hook/useGetDataFireBase";
-import { db } from "../../firebase.config";
-import { doc, getDoc } from "firebase/firestore";
+import ProductsData from "../../assets/data/products";
+
+// import useGetDataFireBase from "../../custom-hook/useGetDataFireBase";
+// import { db } from "../../firebase.config";
+// import { doc, getDoc } from "firebase/firestore";
 
 const ProductDetails = () => {
   const { id } = useParams();
-  // const product = products.find((item) => item.id === id);
+  const product = ProductsData.find((item) => item.id === id);
   const dispatch = useDispatch();
 
-  const [product, setProduct] = useState({});
+  // const [product, setProduct] = useState({});
   const [tab, setTab] = useState("desc");
   const [rating, setRating] = useState(null);
   const reviewUer = useRef("");
   const reviewMess = useRef("");
-  const { data: products } = useGetDataFireBase("products");
-  const docRef = doc(db, "product", id);
 
-  useEffect(() => {
-    const getProduct = async () => {
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        setProduct(doc.data)();
-      } else {
-        console.log("no product");
-      }
-    };
-  }, []);
+  //Get data from Firebase
+  // const { data: products } = useGetDataFireBase("products");
+  // const docRef = doc(db, "product", id);
+  // console.log(docRef);
+  // useEffect(() => {
+  //   const getProduct = async () => {
+  //     const docSnap = await getDoc(docRef);
+  //     if (docSnap.exists()) {
+  //       setProduct(doc.data)();
+  //     } else {
+  //       console.log("no product");
+  //     }
+  //   };
+  //   getProduct();
+  // }, []);
 
   const {
     imgUrl,
@@ -49,7 +53,9 @@ const ProductDetails = () => {
     shortDesc,
   } = product;
 
-  const relateProducts = products.filter((item) => item.category === category);
+  const relateProducts = ProductsData.filter(
+    (item) => item.category === category
+  );
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -59,9 +65,10 @@ const ProductDetails = () => {
 
     const reviewObjUser = {
       useName: reviewUserName,
-      text: reviewMess,
+      text: reviewUserMess,
       rating,
     };
+    toast.success("Đánh giá thành công");
   };
 
   const addToCart = () => {
@@ -73,11 +80,7 @@ const ProductDetails = () => {
         price,
       })
     );
-
-    toast.success("Product add Cart");
   };
-
-  useEffect(() => {}, [product]);
 
   return (
     <Helmet title={productName}>
@@ -115,14 +118,14 @@ const ProductDetails = () => {
               </div>
               <div className="d-flex gap-5 align-items-center ">
                 <span className="product_price">${price} </span>
-                <span>Category : {category}</span>
+                <span> Thuộc loại : {category}</span>
               </div>
               <p className="product_des">{shortDesc}</p>
               <motion.button
                 whileTap={{ scale: 1.1 }}
                 className="buy_btn"
                 onClick={addToCart}>
-                Add to Cart
+                Thêm sản phẩm vào giỏ
               </motion.button>
             </Col>
           </Row>
@@ -137,12 +140,12 @@ const ProductDetails = () => {
                 <h6
                   className={`${tab === "desc" ? "active_tab" : ""}`}
                   onClick={() => setTab("desc")}>
-                  Description
+                  Mô tả
                 </h6>
                 <h6
                   className={`${tab === "rev" ? "active_tab" : ""}`}
                   onClick={() => setTab("rev")}>
-                  Reviews ({reviews.length})
+                  Đánh giá ({reviews?.length})
                 </h6>
               </div>
               {tab === "desc" ? (
@@ -163,12 +166,12 @@ const ProductDetails = () => {
                     </ul>
 
                     <div className="review_form">
-                      <h4>Leave your experience</h4>
-                      <form action="" onSubmit={submitHandler}>
+                      <h4>Chất lượng sản phẩm</h4>
+                      <form action="">
                         <div className="form_group">
                           <input
                             type="text"
-                            placeholder="Enter name"
+                            placeholder="tốt , rất tốt"
                             ref={reviewUer}
                           />
                         </div>
@@ -207,12 +210,15 @@ const ProductDetails = () => {
                             type="text"
                             rows={5}
                             required
-                            placeholder="Review Message"
+                            placeholder="Lời nhận xét"
                             ref={reviewMess}
                           />
                         </div>
-                        <button type="submit" className="buy_btn">
-                          Submit
+                        <button
+                          type="submit"
+                          className="buy_btn"
+                          onClick={submitHandler}>
+                          Đánh giá
                         </button>
                       </form>
                     </div>
@@ -222,7 +228,7 @@ const ProductDetails = () => {
             </Col>
 
             <Col lg="12" className="mt-5">
-              <h2 className="related_title">You might also like</h2>
+              <h2 className="related_title">Sản phẩm bạn có thể thích</h2>
               <div className="d-flex flex-wrap ">
                 <ProductsList data={relateProducts} />
               </div>

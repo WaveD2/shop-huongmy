@@ -9,7 +9,8 @@ import ProductList from "../../components/UI/ProductList";
 
 const Shop = () => {
   const [productsData, setProductsData] = useState(products);
-
+  productsData.sort((a, b) => a.price - b.price);
+  const [productSort, setProductSort] = useState([]);
   const handleFilter = (e) => {
     const filterValue = e.target.value;
     const filterProducts = products?.filter(
@@ -18,6 +19,15 @@ const Shop = () => {
 
     setProductsData(filterProducts.length ? filterProducts : products);
   };
+
+  const handleSort = (e) => {
+    const keyOption = e.target.value;
+    console.log(keyOption);
+    keyOption === "money"
+      ? setProductSort(productsData.sort((a, b) => a.price - b.price))
+      : setProductSort(productsData.sort((a, b) => b.price - a.price));
+  };
+  console.log(productSort);
 
   const handleSearch = (e) => {
     const searchItem = e.target.value;
@@ -39,21 +49,21 @@ const Shop = () => {
             <Col lg="3" md="3">
               <div className="filter_widget">
                 <select onChange={handleFilter}>
-                  <option>Filter By Category</option>
-                  <option value="sofa">Sofa</option>
-                  <option value="mobile">Mobile</option>
-                  <option value="chair">Chair</option>
-                  <option value="watch">Watch</option>
-                  <option value="wireless">Wireless</option>
+                  <option>Tất cả </option>
+                  <option value="sofa">Ghế Dài</option>
+                  <option value="chair">Ghế Nhỏ</option>
+                  <option value="mobile">Điện thoại</option>
+                  <option value="watch">Đồng Hồ</option>
+                  <option value="wireless">Tai nghe</option>
                 </select>
               </div>
             </Col>
             <Col lg="3" md="3">
               <div className="filter_widget">
-                <select name="" id="">
-                  <option>Sort By</option>
-                  <option value="ascending">Ascending</option>
-                  <option value="descending">Descending</option>
+                <select name="" id="" onChange={handleSort}>
+                  <option>Sắp xếp</option>
+                  <option value="trending">Xu hướng</option>
+                  <option value="money">Gía tiền</option>
                 </select>
               </div>
             </Col>
@@ -61,7 +71,7 @@ const Shop = () => {
               <div className="search_box">
                 <input
                   type="text"
-                  placeholder="Search..."
+                  placeholder="Tiềm kiếm..."
                   onChange={handleSearch}
                 />
                 <span>
@@ -77,9 +87,13 @@ const Shop = () => {
         <Container>
           <Row>
             {productsData.length === 0 ? (
-              <h1 className="text-center">No products</h1>
+              <h1 className="text-center">
+                Xin lỗi bạn, Shop Hường Mỵ chưa có sản phẩm này
+              </h1>
             ) : (
-              <ProductList data={productsData} />
+              <ProductList
+                data={productSort.length ? productSort : productsData}
+              />
             )}
           </Row>
         </Container>

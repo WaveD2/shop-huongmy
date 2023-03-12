@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase.config";
 import { toast } from "react-toastify";
-
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -28,11 +27,11 @@ const Login = () => {
 
       console.log(user);
       setLoading(false);
-      toast.success("Successfully logged in");
+      toast.success("Đăng nhập thành công");
       navigate("/home");
     } catch (error) {
       setLoading(false);
-      toast.error(error.message);
+      toast.error("Sai thông tin đăng nhập");
     }
   };
 
@@ -47,13 +46,13 @@ const Login = () => {
               </Col>
             ) : (
               <Col lg="6" className="m-auto text-center">
-                <h3 className="fw-bold d-block mb-3 ">Login</h3>
+                <h3 className="fw-bold d-block mb-3 ">Đăng nhập</h3>
 
                 <Form className="auth_form" onSubmit={signIn}>
                   <FormGroup className="form_group">
                     <input
                       type="email"
-                      placeholder="Enter your email"
+                      placeholder="Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
@@ -61,7 +60,7 @@ const Login = () => {
                   <FormGroup className="form_group">
                     <input
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder="Mật khẩu"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
@@ -70,11 +69,11 @@ const Login = () => {
                   <motion.button
                     whileTap={{ scale: 1.1 }}
                     className="buy_btn auth_btn ">
-                    Login
+                    Đăng nhập
                   </motion.button>
                   <p>
-                    Don't have a account ?{" "}
-                    <Link to="/signup">Create an account</Link>
+                    Bạn chưa có tài khoản ?{" "}
+                    <Link to="/signup">Tạo tài khoản miễn phí</Link>
                   </p>
                 </Form>
               </Col>

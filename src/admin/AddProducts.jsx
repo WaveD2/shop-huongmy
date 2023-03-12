@@ -15,7 +15,6 @@ const AddProducts = () => {
   const [enterPrice, setEnterPrice] = useState("");
   const [enterProductImg, setEnterProductImg] = useState(null);
   const [loading, setLoading] = useState("");
-
   const addProduct = async (e) => {
     e.preventDefault();
 
@@ -44,7 +43,7 @@ const AddProducts = () => {
             });
           });
           toast.success("product success added");
-          navigate("/dashboard/all-products");
+          // navigate("/dashboard/all-products");
         }
       );
     } catch (error) {}
@@ -60,10 +59,9 @@ const AddProducts = () => {
               <h4 className="py-5 fw-bold">Loading....</h4>
             ) : (
               <>
-                <h4>Add Product</h4>
                 <Form onSubmit={addProduct}>
                   <FormGroup className="form_group">
-                    <span>Product title</span>
+                    <span>Tên sản phẩm</span>
                     <input
                       required
                       type="text"
@@ -73,7 +71,7 @@ const AddProducts = () => {
                     />
                   </FormGroup>
                   <FormGroup className="form_group">
-                    <span>Product title</span>
+                    <span>Số lượng sản phầm</span>
                     <input
                       required
                       type="text"
@@ -83,7 +81,7 @@ const AddProducts = () => {
                     />
                   </FormGroup>
                   <FormGroup className="form_group">
-                    <span>Short Description</span>
+                    <span>Miêu tả sản phẩm</span>
                     <input
                       required
                       type="text"
@@ -94,11 +92,11 @@ const AddProducts = () => {
                   </FormGroup>
                   <div className=" d-flex align-items-center  gap-5 justify-content-between">
                     <FormGroup className="form_group w-50">
-                      <span>Price</span>
+                      <span>Gía tiền</span>
                       <input
                         required
                         type="number"
-                        placeholder="$100"
+                        placeholder="100.000"
                         value={enterPrice}
                         onChange={(e) => setEnterPrice(e.target.value)}
                       />
@@ -107,7 +105,7 @@ const AddProducts = () => {
                       className="form_group w-50"
                       value={enterCategory}
                       onChange={(e) => setEnterCategory(e.target.value)}>
-                      <span>Category</span>
+                      <span>Lựa chọn mục sản phẩm</span>
                       <select className="w-100">
                         <option value="chair">Chair</option>
                         <option value="sofa">Sofa</option>
@@ -119,7 +117,7 @@ const AddProducts = () => {
                   </div>
                   <div>
                     <FormGroup className="form_group">
-                      <span>Product Image</span>
+                      <span>Ảnh sản phẩm</span>
                       <input
                         required
                         type="file"
@@ -129,7 +127,7 @@ const AddProducts = () => {
                       />
                     </FormGroup>
 
-                    <button className="buy_btn">Add Product</button>
+                    <button className="buy_btn">Thêm sản phẩm</button>
                   </div>
                 </Form>
               </>

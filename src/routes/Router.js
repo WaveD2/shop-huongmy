@@ -12,15 +12,16 @@ import AddProducts from "../admin/AddProducts";
 import Dashboard from "../admin/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import User from "../admin/User";
+import PageError from "../components/Error/404";
 
 const Routers = () => {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/home" />}></Route>
       <Route path="/home" element={<Home />}></Route>
-      <Route path="/cart" element={<Cart />}></Route>
+      <Route path="/*" element={<PageError />} />
 
-      <Route path="/*" element={<ProtectedRoute />}>
+      <Route element={<ProtectedRoute />}>
         <Route path="checkout" element={<Checkout />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="dashboard/all-products" element={<AllProducts />} />
@@ -28,9 +29,13 @@ const Routers = () => {
         <Route path="dashboard/users" element={<User />} />
       </Route>
 
+      <Route path="/*" element={<ProtectedRoute />}>
+        <Route path="cart" element={<Cart />}></Route>
+        <Route path="shop" element={<Shop />}></Route>
+        <Route path="shop/:id" element={<ProductDetails />}></Route>
+      </Route>
       <Route path="/login" element={<Login />}></Route>
-      <Route path="/shop" element={<Shop />}></Route>
-      <Route path="/shop/:id" element={<ProductDetails />}></Route>
+
       <Route path="/signup" element={<Signup />}></Route>
     </Routes>
   );

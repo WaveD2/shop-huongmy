@@ -16,7 +16,6 @@ import "./Home.css";
 
 const Home = () => {
   const { data: product, loading } = useGetDataFireBase("products");
-  const year = new Date().getFullYear();
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [bestSalesProducts, setBestSalesProducts] = useState([]);
   const [wirelessProducts, setWirelessProducts] = useState([]);
@@ -54,7 +53,7 @@ const Home = () => {
           <Row>
             <Col lg="6" md="6">
               <div className="hero_content">
-                <p className="hero_subtitle">Cửa hàng trending {year}</p>
+                <h1>Shop Hường Mỵ</h1>
                 <h2>Uy tín, chất lượng làm nên thương hiệu</h2>
                 <p>
                   Cửa hàng{" "}
@@ -70,7 +69,7 @@ const Home = () => {
                 </p>
 
                 <motion.button whileTap={{ scale: 1.2 }} className="buy_btn ">
-                  <Link to="/shop">KHÁM PHÁ SẢN PHẨM</Link>
+                  <Link to="/shop">MUA HÀNG NGAY !</Link>
                 </motion.button>
               </div>
             </Col>

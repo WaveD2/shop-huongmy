@@ -3,7 +3,9 @@
     height: auto;
     background-color: var(--primary-color);
 }
-
+.admin_nav {
+    position: relative;
+}
 .admin_nav-top {
     width: 100%;
     padding: 10px 0;
@@ -53,6 +55,11 @@
     justify-content: space-around;
     align-items: center;
 }
+.itemActive {
+    width: 100%;
+    border-radius: 5px;
+    background-color: var(--card-bg-03);
+}
 .admin_menu-item a {
     color: var(--primary-color);
     font-weight: 500;
@@ -60,9 +67,6 @@
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
-}
-.active_admin-item {
-    background-color: #6aa3f8;
 }
 
 /* dashboard */
@@ -102,4 +106,75 @@
     font-size: 2rem;
     font-weight: 600;
     color: var(--primary-color);
+}
+.mobile_menu {
+    display: none;
+}
+.mobile_menu-close {
+    display: none;
+    position: absolute;
+    right: 5%;
+    bottom: 10px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-weight: 700;
+    text-align: center;
+    border-radius: 999px;
+    border: 1px solid #fff;
+}
+@media screen and (max-width: 768px) {
+    .admin_nav-wrapper-top {
+        justify-content: space-between;
+    }
+    .admin_nav-wrapper-top .search_box {
+        display: none;
+    }
+    .admin_menu-list {
+        display: none;
+    }
+    .admin_menu-list.menuActive {
+        display: flex;
+        flex-flow: column;
+        z-index: 10;
+        background-color: #4e4d4d;
+        position: absolute;
+        top: 0%;
+        left: 0;
+        right: 0;
+        padding: 10px;
+    }
+    .mobile_menu-close.menuActive {
+        display: block;
+        z-index: 99;
+    }
+    .mobile_menu {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .mobile_menu .search_box {
+        width: auto;
+        line-height: 30px;
+    }
+    .table thead {
+        display: flex;
+    }
+    .table tbody {
+        display: flex;
+        flex-flow: column;
+        font-size: 14px;
+        gap: 5px;
+    }
+    .table tbody tr {
+        padding: 0 4px;
+        width: 20%;
+    }
+    .btn {
+        padding: 6px 4px;
+        font-size: 10px;
+    }
+    .col-lg-3 {
+        margin: 8px 0;
+    }
 }

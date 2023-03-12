@@ -10,7 +10,7 @@ const ProductList = ({ data, isBtn }) => {
       {isBtn && (
         <button
           type="button"
-          class=" btn btn-outline-primary mt-5 "
+          className=" btn btn-outline-primary mt-5 "
           style={{ width: "150px" }}>
           Xem thêm
         </button>

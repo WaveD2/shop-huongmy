@@ -2,8 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 const initialState = {
   cartItems: [],
+  cartHeart: [],
   totalAmount: 0,
   totalQuantity: 0,
+  totalHeart: 0,
 };
 
 const cartSlice = createSlice({
@@ -22,20 +24,42 @@ const cartSlice = createSlice({
           productName: newItem.productName,
           image: newItem.image,
           price: newItem.price,
-          quantity: 1,
+          quantityProduct: 1,
           totalPrice: newItem.price,
         });
 
-        toast.success("Product add success !");
+        toast.success("Thêm vào giỏ hàng thành công !");
       } else {
-        existingItm.quantity++;
+        existingItm.quantityProduct++;
         existingItm.totalPrice =
           Number(existingItm.totalPrice) + Number(newItem.price);
       }
       state.totalAmount = state.cartItems.reduce(
-        (total, item) => total + Number(item.price) * Number(item.quantity),
+        (total, item) =>
+          total + Number(item.price) * Number(item.quantityProduct),
         0
       );
+    },
+    addHeart: (state, action) => {
+      const newItem = action.payload;
+      const existingItm = state.cartHeart.find(
+        (item) => item.id === newItem.id
+      );
+      if (!existingItm) {
+        state.totalHeart++;
+        state.cartHeart.push({
+          id: newItem.id,
+          productName: newItem.productName,
+          image: newItem.image,
+          price: newItem.price,
+          quantityHeart: 1,
+        });
+        console.log(state.cartHeart);
+
+        toast.success("Thêm vào sản phẩm yêu thích!");
+      } else {
+        toast.success("Sản phẩm đã thêm vào yêu thích!");
+      }
     },
 
     deleteItem: (state, action) => {
@@ -56,4 +80,8 @@ const cartSlice = createSlice({
 
 export const cartActions = cartSlice.actions;
 
-export default cartSlice.reducer;
+const cartAction = {
+  cartSlice: cartSlice.reducer,
+};
+
+export default cartAction;

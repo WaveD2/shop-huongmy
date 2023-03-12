@@ -20,11 +20,11 @@ const AllProducts = () => {
             <table className="table">
               <thead>
                 <tr>
-                  <th>Image</th>
-                  <th>Title</th>
-                  <th>Category</th>
-                  <th>Price</th>
-                  <th>Action</th>
+                  <th>Ảnh</th>
+                  <th>Tên</th>
+                  <th>Số lượng</th>
+                  <th>Gía tiền</th>
+                  <th>Trạng thái</th>
                 </tr>
               </thead>
               {loading ? (
@@ -43,7 +43,7 @@ const AllProducts = () => {
                         <button
                           className="btn btn-danger"
                           onClick={() => deleteProduct(item.id)}>
-                          Delete
+                          Xóa
                         </button>
                       </td>
                     </tr>

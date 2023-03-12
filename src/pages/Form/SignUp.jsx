@@ -36,7 +36,7 @@ const Login = () => {
           const uploadTask = uploadBytesResumable(storageRef, fileUser);
           uploadTask.on(
             (error) => {
-              toast.error(error.message);
+              toast.error(error);
             },
             () =>
               getDownloadURL(uploadTask.snapshot.ref).then(
@@ -57,12 +57,12 @@ const Login = () => {
           );
           setLoading(false);
           navigate("/login");
-          toast.success("Account created");
+          toast.success("Đăng kí thành công");
         }
       );
     } catch (error) {
       setLoading(false);
-      toast.error("Not upload up firebase");
+      toast.error("Đăng kí không thành công");
     }
   };
 
@@ -77,13 +77,13 @@ const Login = () => {
               </Col>
             ) : (
               <Col lg="6" className="m-auto text-center">
-                <h3 className="fw-bold d-block mb-3 ">Sign Up</h3>
+                <h3 className="fw-bold d-block mb-3 ">Đăng kí</h3>
 
                 <Form className="auth_form" onSubmit={signup}>
                   <FormGroup className="form_group">
                     <input
                       type="text"
-                      placeholder="Enter user name"
+                      placeholder="Họ và tên"
                       value={nameUser}
                       onChange={(e) => setNameUser(e.target.value)}
                     />
@@ -91,7 +91,7 @@ const Login = () => {
                   <FormGroup className="form_group">
                     <input
                       type="number"
-                      placeholder="Enter user number phone"
+                      placeholder="Số điện thoại"
                       value={phoneUser}
                       onChange={(e) => setPhoneUser(e.target.value)}
                     />
@@ -99,7 +99,7 @@ const Login = () => {
                   <FormGroup className="form_group">
                     <input
                       type="email"
-                      placeholder="Enter your email"
+                      placeholder="Email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
@@ -107,7 +107,7 @@ const Login = () => {
                   <FormGroup className="form_group">
                     <input
                       type="password"
-                      placeholder="Enter your password"
+                      placeholder="Mật khẩu"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
                     />
@@ -122,10 +122,10 @@ const Login = () => {
                   <motion.button
                     whileTap={{ scale: 1.1 }}
                     className="buy_btn auth_btn ">
-                    Create an account
+                    Đăng kí tài khoản
                   </motion.button>
                   <p>
-                    Already have a account ? <Link to="/login">Login</Link>
+                    Bạn đã có tài khoản? <Link to="/login">Đăng nhập ngay</Link>
                   </p>
                 </Form>
               </Col>

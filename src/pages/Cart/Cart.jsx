@@ -11,7 +11,9 @@ import "./Cart.css";
 
 const Cart = () => {
   const cartItem = useSelector((state) => state.cart.cartItems);
+  const cartHeart = useSelector((state) => state.cart.cartHeart);
   const totalAmount = useSelector((state) => state.cart.totalAmount);
+  let listCarts = cartItem || cartHeart;
 
   return (
     <Helmet title="Cart">
@@ -20,21 +22,23 @@ const Cart = () => {
         <Container>
           <Row>
             <Col lg="9">
-              {cartItem.length === 0 ? (
-                <h1 className="">No product</h1>
+              {listCarts.length === 0 ? (
+                <h1 className="">Bạn chưa chọn sản phẩm</h1>
               ) : (
                 <table className="table bordered">
                   <thead>
                     <tr>
-                      <th>Image</th>
-                      <th>Title</th>
-                      <th>Price</th>
-                      <th>Qty</th>
-                      <motion.th whileTap={{ scale: 1.1 }}> Delete</motion.th>
+                      <th>Ảnh</th>
+                      <th>Tên</th>
+                      <th>Gía tiền</th>
+                      <th>Số lượng</th>
+                      <motion.th whileTap={{ scale: 1.1 }}>
+                        Xóa khỏi giỏ hàng
+                      </motion.th>
                     </tr>
                   </thead>
                   <tbody>
-                    {cartItem?.map((item, index) => (
+                    {listCarts?.map((item, index) => (
                       <Tr item={item} key={index} />
                     ))}
                   </tbody>
@@ -45,19 +49,17 @@ const Cart = () => {
             <Col lg="3">
               <div className="">
                 <h6 className="d-flex align-items-center justify-content-between ">
-                  Subtotal
+                  Gía tiền
                 </h6>
                 <span className="fs-4 fw-bold">${totalAmount}</span>
               </div>
-              <p className="fs-6 mt-2">
-                taxes and shipping will calculate in checkout
-              </p>
+
               <div>
                 <button className="buy_btn w-100">
-                  <Link to="/shop">Continue Shopping</Link>
+                  <Link to="/shop">Tiếp tục mua hàng</Link>
                 </button>
                 <button className="buy_btn w-100 mt-2">
-                  <Link to="/checkout">Checkout</Link>
+                  <Link to="/checkout">Thanh toán</Link>
                 </button>
               </div>
             </Col>
@@ -81,7 +83,7 @@ const Tr = ({ item }) => {
       </td>
       <td>{item.productName}</td>
       <td>${item.price}</td>
-      <td>{item.quantity}</td>
+      <td>{item.quantityProduct}</td>
       <motion.td whileTap={{ scale: 1.1 }}>
         <i className="ri-delete-bin-line" onClick={deleteProduct}></i>
       </motion.td>

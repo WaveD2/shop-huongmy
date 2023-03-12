@@ -18,6 +18,16 @@ const ProductCard = ({ item }) => {
       })
     );
   };
+  const addToHeart = () => {
+    dispatch(
+      cartActions.addHeart({
+        id: item.id,
+        productName: item.productName,
+        price: item.price,
+        image: item.imgUrl,
+      })
+    );
+  };
 
   return (
     <Col lg="3" md="4">
@@ -37,9 +47,17 @@ const ProductCard = ({ item }) => {
         </div>
         <div className="product_cart-bottom d-flex align-items-center justify-content-between p-2">
           <span className="price">${item.price}</span>
-          <motion.span whileTap={{ scale: 1.2 }} onClick={addToCart}>
-            <i className="ri-add-line"></i>
-          </motion.span>
+          <div>
+            <motion.span
+              whileTap={{ scale: 1.2 }}
+              onClick={addToHeart}
+              className="mx-2">
+              <i className="ri-heart-line"></i>
+            </motion.span>
+            <motion.span whileTap={{ scale: 1.2 }} onClick={addToCart}>
+              <i className="ri-add-line"></i>
+            </motion.span>
+          </div>
         </div>
       </div>
     </Col>

@@ -1,5 +1,5 @@
 /* google fonts */
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
 
 /*  css variables */
 :root {
@@ -22,7 +22,7 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 h1,
@@ -45,7 +45,9 @@ h1,
 h2 {
   font-size: var(--heading-fontSize);
 }
-
+h4 {
+  color: var(--primary-color) !important;
+}
 ul {
   list-style: none;
 }
