@@ -10,6 +10,7 @@ import useAuth from "../../custom-hook/useAuth";
 import { signOut } from "firebase/auth";
 import { auth } from "../../firebase.config";
 import { toast } from "react-toastify";
+import Logo from "../UI/Logo";
 // import { cartActions, cartActiveActions } from "../../redux/slices/cartSlice";
 
 const Nav_link = [
@@ -77,9 +78,7 @@ const Header = () => {
           <div className="nav_wrapper">
             <Link to="/home" className="logo">
               <img src={logo} alt="logo" />
-              <div className="">
-                <h1>WaveD</h1>
-              </div>
+              <Logo />
             </Link>
 
             <div className="navigation" ref={menuRef} onClick={menuToggle}>

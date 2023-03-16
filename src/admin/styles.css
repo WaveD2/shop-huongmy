@@ -1,23 +1,15 @@
 .admin_header {
     width: 100%;
     height: auto;
-    background-color: var(--primary-color);
+    background-color: var(--card-bg-01);
 }
 .admin_nav {
     position: relative;
-}
-.admin_nav-top {
-    width: 100%;
-    padding: 10px 0;
-}
-.admin_nav-wrapper-top {
     display: flex;
+    justify-content: space-around;
     align-items: center;
-    gap: 12px;
 }
-.admin_nav-wrapper-top .search_box {
-    position: relative;
-}
+
 .search_box input {
     border-radius: 4px;
 }
@@ -54,6 +46,7 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 0 !important;
 }
 .itemActive {
     width: 100%;
@@ -123,6 +116,7 @@
     border-radius: 999px;
     border: 1px solid #fff;
 }
+
 @media screen and (max-width: 768px) {
     .admin_nav-wrapper-top {
         justify-content: space-between;

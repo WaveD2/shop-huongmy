@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable jsx-a11y/alt-text */
+import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Form, FormGroup } from "reactstrap";
 import { toast } from "react-toastify";
 import { db, storage } from "../firebase.config";
@@ -13,41 +15,35 @@ const AddProducts = () => {
   const [enterDescription, setEnterDescription] = useState("");
   const [enterCategory, setEnterCategory] = useState("");
   const [enterPrice, setEnterPrice] = useState("");
-  const [enterProductImg, setEnterProductImg] = useState(null);
+  const [enterProductImg, setEnterProductImg] = useState();
   const [loading, setLoading] = useState("");
+
   const addProduct = async (e) => {
     e.preventDefault();
-
-    // add product to the firebase database
-    try {
-      const docRef = await collection(db, "products");
-      const storageRef = ref(
-        storage,
-        `productImages/${Date.now() + enterProductImg.name}`
-      );
-      const uploadTask = uploadBytesResumable(storageRef, enterProductImg);
-
-      uploadTask.on(
-        () => {
-          toast.error("images not uploaded");
-        },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async (downloadURL) => {
-            await addDoc(docRef, {
-              title: enterTitle,
-              shortDesc: enterShortDesc,
-              description: enterDescription,
-              category: enterCategory,
-              price: enterPrice,
-              imgUrl: downloadURL,
-            });
+    const docRef = await collection(db, "products");
+    const storageRef = ref(
+      storage,
+      `productImages/${Date.now() + enterProductImg.name}`
+    );
+    const uploadTask = uploadBytesResumable(storageRef, enterProductImg);
+    uploadTask.on(
+      () => {
+        toast.error("images not uploaded");
+      },
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          addDoc(docRef, {
+            title: enterTitle,
+            shortDesc: enterShortDesc,
+            description: enterDescription,
+            category: enterCategory,
+            price: enterPrice,
+            imgUrl: downloadURL,
           });
-          toast.success("product success added");
-          // navigate("/dashboard/all-products");
-        }
-      );
-    } catch (error) {}
-    toast.success("Crate Product Success ");
+        });
+        toast.success("Tạo sản phẩm thành công ");
+      }
+    );
   };
 
   return (
@@ -65,7 +61,7 @@ const AddProducts = () => {
                     <input
                       required
                       type="text"
-                      placeholder="Double sofa"
+                      placeholder="VD: Váy xòe"
                       value={enterTitle}
                       onChange={(e) => setEnterTitle(e.target.value)}
                     />
@@ -74,18 +70,18 @@ const AddProducts = () => {
                     <span>Số lượng sản phầm</span>
                     <input
                       required
-                      type="text"
-                      placeholder="Double sofa"
+                      type="number"
+                      placeholder="VD: 10"
                       value={enterShortDesc}
                       onChange={(e) => setEnterShortDesc(e.target.value)}
                     />
                   </FormGroup>
                   <FormGroup className="form_group">
-                    <span>Miêu tả sản phẩm</span>
+                    <span>Mô tả sản phẩm</span>
                     <input
                       required
                       type="text"
-                      placeholder="Lorem..."
+                      placeholder="Màu sắc, chất liệu,...."
                       value={enterDescription}
                       onChange={(e) => setEnterDescription(e.target.value)}
                     />
@@ -107,19 +103,20 @@ const AddProducts = () => {
                       onChange={(e) => setEnterCategory(e.target.value)}>
                       <span>Lựa chọn mục sản phẩm</span>
                       <select className="w-100">
-                        <option value="chair">Chair</option>
-                        <option value="sofa">Sofa</option>
-                        <option value="mobile">Mobile</option>
-                        <option value="watch">Watch</option>
-                        <option value="wireless">Wireless</option>
+                        <option value="pants">Quần</option>
+                        <option value="shirt">Áo</option>
+                        <option value="shoes">Gìay</option>
+                        <option value="suit">Set quần && áo</option>
+                        <option value="accessory">Phụ kiện</option>
                       </select>
                     </FormGroup>
                   </div>
                   <div>
                     <FormGroup className="form_group">
-                      <span>Ảnh sản phẩm</span>
+                      <span> Ảnh chính của sản phẩm</span>
                       <input
                         required
+                        multiple
                         type="file"
                         onChange={(e) => {
                           setEnterProductImg(e.target.files[0]);

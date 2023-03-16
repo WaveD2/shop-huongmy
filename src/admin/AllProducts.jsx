@@ -37,8 +37,8 @@ const AllProducts = () => {
                         <img src={item.imgUrl} alt="img-product" />
                       </td>
                       <td>{item.title}</td>
-                      <td>{item.category}</td>
-                      <td>${item.price}</td>
+                      <td>{item.shortDesc}</td>
+                      <td>{item.price} đồng</td>
                       <td>
                         <button
                           className="btn btn-danger"

@@ -46,7 +46,7 @@ const ProductCard = ({ item }) => {
           <span className="text-center">{item.category}</span>
         </div>
         <div className="product_cart-bottom d-flex align-items-center justify-content-between p-2">
-          <span className="price">${item.price}</span>
+          <span className="price">{item.price}K</span>
           <div>
             <motion.span
               whileTap={{ scale: 1.2 }}

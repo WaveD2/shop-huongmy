@@ -7,6 +7,9 @@ import { motion } from "framer-motion";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase.config";
 import { toast } from "react-toastify";
+
+const roleCheckAdmin = "admin_shop37@gmail.com";
+
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -23,12 +26,11 @@ const Login = () => {
         email,
         password
       );
-      const user = userCredential.user;
-
-      console.log(user);
       setLoading(false);
       toast.success("Đăng nhập thành công");
-      navigate("/home");
+      userCredential.user.email.toString() === roleCheckAdmin
+        ? navigate("/dashboard")
+        : navigate("/home");
     } catch (error) {
       setLoading(false);
       toast.error("Sai thông tin đăng nhập");

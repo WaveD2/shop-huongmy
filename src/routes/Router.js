@@ -21,7 +21,7 @@ const Routers = () => {
       <Route path="/home" element={<Home />}></Route>
       <Route path="/*" element={<PageError />} />
 
-      <Route element={<ProtectedRoute />}>
+      <Route path="/" element={<ProtectedRoute />}>
         <Route path="checkout" element={<Checkout />} />
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="dashboard/all-products" element={<AllProducts />} />
@@ -30,9 +30,9 @@ const Routers = () => {
       </Route>
 
       <Route path="/*" element={<ProtectedRoute />}>
-        <Route path="cart" element={<Cart />}></Route>
-        <Route path="shop" element={<Shop />}></Route>
-        <Route path="shop/:id" element={<ProductDetails />}></Route>
+        <Route path="cart" element={<Cart />} />
+        <Route path="shop" element={<Shop />} />
+        <Route path="shop/:id" element={<ProductDetails />} />
       </Route>
       <Route path="/login" element={<Login />}></Route>
 

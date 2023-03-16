@@ -17,19 +17,16 @@ const User = () => {
       <Container>
         <Row>
           <Col lg="12">
-            <h4 className="fw-bold">Users</h4>
-          </Col>
-          <Col lg="12" className="table">
-            <thead>
-              <tr>
-                <th>Ảnh</th>
-                <th>Tên </th>
-                <th>Email</th>
-                <th>Trạng thái</th>
-              </tr>
-            </thead>
+            <table className="table">
+              <thead>
+                <tr>
+                  <th>Ảnh</th>
+                  <th>Tên </th>
+                  <th>Email</th>
+                  <th>Trạng thái</th>
+                </tr>
+              </thead>
 
-            <tbody>
               {loading ? (
                 <h4 className="fw-bold py-5">Loading...</h4>
               ) : (
@@ -52,7 +49,7 @@ const User = () => {
                   </tbody>
                 ))
               )}
-            </tbody>
+            </table>
           </Col>
         </Row>
       </Container>

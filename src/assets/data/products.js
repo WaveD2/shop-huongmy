@@ -31,10 +31,10 @@ import productImg25 from "../images/wireless-03.png";
 const products = [
   {
     id: "01",
-    productName: "Stone and Beam Westview ",
+    productName: "Ghế SOFA TAMPA",
     imgUrl: productImg01,
     category: "sofa",
-    price: 193.0,
+    price: 1293.0,
     shortDesc:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur iure quas illo voluptates labore tempore!",
     description:
@@ -50,7 +50,7 @@ const products = [
 
   {
     id: "02",
-    productName: "Rivet Bigelow Modern ",
+    productName: "GHẾ BÀNH ATLANTA ",
     imgUrl: productImg02,
     category: "sofa",
     price: 253.0,
@@ -73,7 +73,7 @@ const products = [
 
   {
     id: "03",
-    productName: "Amazon Brand Modern Sofa",
+    productName: "SOFA JOY",
     imgUrl: productImg03,
     category: "sofa",
     price: 173.0,
@@ -95,7 +95,7 @@ const products = [
   },
   {
     id: "26",
-    productName: "Rivet Bigelow Modern ",
+    productName: "SOFA HOUSTON",
     imgUrl: productImg02,
     category: "sofa",
     price: 253.0,
@@ -117,7 +117,7 @@ const products = [
   },
   {
     id: "04",
-    productName: "Fllufy Sheep Sofa",
+    productName: "SOFA DALLAS",
     imgUrl: productImg04,
     category: "sofa",
     price: 163.0,
