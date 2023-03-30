@@ -64,8 +64,8 @@ const Home = () => {
                     }}>
                     Hường Mỵ{" "}
                   </span>
-                  chuyên sỉ lẻ quần áo - giày dép trẻ em <br />
-                  Liên hệ : 09882335**
+                  chuyên sỉ lẻ bàn ghế - nội thất <br />
+                  Liên hệ : 0988233528
                 </p>
 
                 <motion.button whileTap={{ scale: 1.2 }} className="buy_btn ">
