@@ -5,6 +5,7 @@ import "./styles.css";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../redux/slices/cartSlice";
+import { convertVND } from "../../utils/convertVND";
 
 const ProductCard = ({ item }) => {
   const dispatch = useDispatch();
@@ -37,6 +38,7 @@ const ProductCard = ({ item }) => {
             whileHover={{ scale: 1.1 }}
             src={item.imgUrl}
             alt="ghế bông"
+            style={{ width: 300, height: 300, borderRadius: 8 }}
           />
         </div>
         <div className="p-2 product_info">
@@ -46,7 +48,9 @@ const ProductCard = ({ item }) => {
           <span className="text-center">{item.category}</span>
         </div>
         <div className="product_cart-bottom d-flex align-items-center justify-content-between p-2">
-          <span className="price">{item.price}K</span>
+          <span className="price">
+            {convertVND(item.price.toString())} đồng
+          </span>
           <div>
             <motion.span
               whileTap={{ scale: 1.2 }}

@@ -92,7 +92,7 @@ const AddProducts = () => {
                       <input
                         required
                         type="number"
-                        placeholder="100.000"
+                        placeholder="100000"
                         value={enterPrice}
                         onChange={(e) => setEnterPrice(e.target.value)}
                       />

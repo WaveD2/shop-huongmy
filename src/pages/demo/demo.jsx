@@ -1,15 +1,21 @@
-import React, { useState } from "react";
-import CommonSelection from "../../components/UI/CommonSelection";
+import React, { useState, useEffect } from "react";
 import Helmet from "../../components/Helmet/Helmet";
 import { Col, Container, Row } from "reactstrap";
 import "./Shop.css";
+import useGetDataFirebase from "../../custom-hook/useGetDataFireBase";
 
 import products from "../../assets/data/products";
 import ProductList from "../../components/UI/ProductList";
 
-const Shop = () => {
-  const [productsData, setProductsData] = useState(products);
-  productsData.sort((a, b) => a.price - b.price);
+const Demo = () => {
+  const { data: productFetch, loading } = useGetDataFirebase("products");
+  const [productsData, setProductsData] = useState([]);
+  useEffect(() => {
+    setProductsData(productFetch);
+  }, [productFetch]);
+
+  console.log(productFetch);
+  console.log(productsData);
   const [productSort, setProductSort] = useState([]);
   const handleFilter = (e) => {
     const filterValue = e.target.value;
@@ -82,7 +88,7 @@ const Shop = () => {
         </Container>
       </section>
 
-      <section className="pt-0">
+      <section className="pt-0" style={{ height: "max-content" }}>
         <Container>
           <Row>
             {productsData.length === 0 ? (
@@ -101,4 +107,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default Demo;

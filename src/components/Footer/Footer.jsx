@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="footer">
       <Container>
         <Row>
-          <Col lg="4" className="mb-4">
+          <Col lg="4">
             <div className="logo d-flex justify-content-start ">
               <h1>WaveD</h1>
             </div>
@@ -22,7 +22,7 @@ const Footer = () => {
             </div>
           </Col>
 
-          <Col lg="3" className="mb-4">
+          <Col lg="3" className="menuMobile">
             <div className="footer_quick-links">
               <h4 className="quick_links-title">Sản phẩm </h4>
               <ListGroup className="footer_box">
@@ -42,7 +42,7 @@ const Footer = () => {
             </div>
           </Col>
 
-          <Col lg="2" className="mb-4">
+          <Col lg="2" className="menuMobile">
             <div className="footer_quick-links">
               <h4 className="quick_links-title">Menu</h4>
               <ListGroup className="footer_box">
@@ -59,7 +59,7 @@ const Footer = () => {
             </div>
           </Col>
 
-          <Col lg="3" className="mb-4">
+          <Col lg="3">
             <div className="footer_quick-links">
               <h4 className="quick_links-title">Liên hệ</h4>
               <ListGroup className="footer_box">
@@ -87,7 +87,7 @@ const Footer = () => {
             </div>
           </Col>
 
-          <Col lg="12" className="mb-4">
+          <Col lg="12">
             <div className="copy_right">
               <p>
                 Copyright by <span className="text-bg-danger">@WaveD</span>{" "}

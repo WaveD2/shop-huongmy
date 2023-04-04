@@ -4,10 +4,10 @@ import { toast } from "react-toastify";
 import { db, storage } from "../firebase.config";
 import { doc, deleteDoc } from "firebase/firestore";
 import useGetDataFirebase from "../custom-hook/useGetDataFireBase";
+import { convertVND } from "../utils/convertVND";
 
 const AllProducts = () => {
   const { data: productData, loading } = useGetDataFirebase("products");
-
   const deleteProduct = async (id) => {
     await deleteDoc(doc(db, "products", id));
     toast.success("Delete product success");
@@ -38,7 +38,7 @@ const AllProducts = () => {
                       </td>
                       <td>{item.title}</td>
                       <td>{item.shortDesc}</td>
-                      <td>{item.price} đồng</td>
+                      <td>{convertVND(item.price)} đồng</td>
                       <td>
                         <button
                           className="btn btn-danger"

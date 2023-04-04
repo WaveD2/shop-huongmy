@@ -7,7 +7,6 @@ const initialState = {
   totalQuantity: 0,
   totalHeart: 0,
 };
-
 const cartSlice = createSlice({
   name: "cart",
   initialState,
@@ -42,20 +41,14 @@ const cartSlice = createSlice({
     },
     addHeart: (state, action) => {
       const newItem = action.payload;
-      const existingItm = state.cartHeart.find(
+      const existingItm = state.cartHeart.some(
         (item) => item.id === newItem.id
       );
       if (!existingItm) {
         state.totalHeart++;
         state.cartHeart.push({
-          id: newItem.id,
-          productName: newItem.productName,
-          image: newItem.image,
-          price: newItem.price,
-          quantityHeart: 1,
+          ...newItem,
         });
-        console.log(state.cartHeart);
-
         toast.success("Thêm vào sản phẩm yêu thích!");
       } else {
         toast.success("Sản phẩm đã thêm vào yêu thích!");
@@ -74,6 +67,16 @@ const cartSlice = createSlice({
         (total, item) => total + Number(item.price) * Number(item.quantity),
         0
       );
+    },
+
+    deleteHeart: (state, action) => {
+      console.log(action);
+      const idHeart = action.payload;
+      const productHeart = state.cartHeart.filter(
+        (item) => item.id !== idHeart
+      );
+      state.cartHeart = productHeart;
+      state.totalHeart--;
     },
   },
 });

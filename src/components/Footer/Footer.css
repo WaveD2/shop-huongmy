@@ -1,22 +1,36 @@
 .footer {
-    background: var(--primary-color);
-    padding: 20px 0px;
+  position: relative;
+  bottom: 0;
+  background: var(--primary-color);
+  padding: 20px 0px;
 }
 
 .footer h1,
 h4 {
-    color: #fff;
+  color: #fff;
 }
 .footer_box li {
-    background-color: var(--primary-color);
-    color: #fff;
+  background-color: var(--primary-color);
+  color: #fff;
 }
 .footer_box li:hover a {
-    color: #ccc;
+  color: #ccc;
 }
+.row > div {
+  margin-bottom: 20px;
+}
+
 @media screen and (max-width: 768px) {
-    .footer_box span {
-        display: flex;
-        gap: 10px;
-    }
+  .footer_box span {
+    display: flex;
+    gap: 8px;
+    font-size: 12px;
+  }
+  .row > div {
+    margin-bottom: 4px;
+  }
+  .menuMobile {
+    display: inline-block;
+    width: auto;
+  }
 }

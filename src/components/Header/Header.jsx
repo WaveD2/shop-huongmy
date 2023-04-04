@@ -28,7 +28,26 @@ const Nav_link = [
   },
 ];
 
-const Header = () => {
+const Nav_admin = [
+  {
+    path: "/dashboard",
+    display: "Biểu đồ",
+  },
+  {
+    path: "/dashboard/all-products",
+    display: "Sản phẩm",
+  },
+  {
+    path: "dashboard/add-product",
+    display: "Tạo sản phẩm",
+  },
+  {
+    path: "dashboard/users",
+    display: "Người dùng",
+  },
+];
+const Header = ({ info }) => {
+  const menuItemNav = info === "admin" ? Nav_admin : Nav_link;
   const dispatch = useDispatch();
   const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   const totalHeart = useSelector((state) => state.cart.totalHeart);
@@ -80,10 +99,9 @@ const Header = () => {
               <img src={logo} alt="logo" />
               <Logo />
             </Link>
-
             <div className="navigation" ref={menuRef} onClick={menuToggle}>
               <ul className="menu">
-                {Nav_link.map((item, index) => (
+                {menuItemNav.map((item, index) => (
                   <li className="nav_item" key={index}>
                     <NavLink
                       to={item.path}
@@ -106,7 +124,7 @@ const Header = () => {
                   //     isActive: false,
                   //   })
                   // );
-                  navigate("/cart");
+                  navigate("/heart");
                 }}>
                 <i className="ri-heart-line"></i>
                 <span className="badge">{totalHeart}</span>

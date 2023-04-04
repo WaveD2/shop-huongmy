@@ -13,6 +13,8 @@ import Dashboard from "../admin/Dashboard";
 import ProtectedRoute from "./ProtectedRoute";
 import User from "../admin/User";
 import PageError from "../components/Error/404";
+import Heart from "../pages/Cart/Heart";
+import Demo from "../pages/demo/demo";
 
 const Routers = () => {
   return (
@@ -27,10 +29,12 @@ const Routers = () => {
         <Route path="dashboard/all-products" element={<AllProducts />} />
         <Route path="dashboard/add-product" element={<AddProducts />} />
         <Route path="dashboard/users" element={<User />} />
+        <Route path="dashboard/demo" element={<Demo />} />
       </Route>
 
       <Route path="/*" element={<ProtectedRoute />}>
         <Route path="cart" element={<Cart />} />
+        <Route path="heart" element={<Heart />} />
         <Route path="shop" element={<Shop />} />
         <Route path="shop/:id" element={<ProductDetails />} />
       </Route>
