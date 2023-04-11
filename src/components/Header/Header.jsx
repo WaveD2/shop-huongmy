@@ -57,6 +57,7 @@ const Header = ({ info }) => {
   const menuRef = useRef(null);
   const currentUser = useAuth();
   const profileActionRef = useRef();
+
   const stickyHeaderFunc = () => {
     window.addEventListener("scroll", () => {
       if (
@@ -119,12 +120,9 @@ const Header = ({ info }) => {
               <span
                 className="heart_icon"
                 onClick={() => {
-                  // dispatch(
-                  //   cartActiveActions.statusActive({
-                  //     isActive: false,
-                  //   })
-                  // );
-                  navigate("/heart");
+                  if (currentUser) {
+                    navigate("/heart");
+                  }
                 }}>
                 <i className="ri-heart-line"></i>
                 <span className="badge">{totalHeart}</span>
