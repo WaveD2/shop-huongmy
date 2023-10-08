@@ -50,6 +50,7 @@ const Login = () => {
         }
       })
       .catch((error) => {
+        toast.error("Sai thông tin đăng nhập");
         console.log("lỗi connect firebase", error);
       });
   };

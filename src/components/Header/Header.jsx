@@ -141,7 +141,7 @@ const Header = ({ info }) => {
                 <span className="badge">{totalQuantity}</span>
               </span>
 
-              <div>
+              <div style={{ position: "relative" }}>
                 <motion.img
                   whileTap={{ scale: 1.2 }}
                   src={currentUser?.photoURL || imgUser}
